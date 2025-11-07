@@ -1,7 +1,6 @@
 import { useState } from 'react'
-import { FileText, Download, Eye, Search } from 'lucide-react'
+import { Download, Eye, Search } from 'lucide-react'
 import Card from '../components/Card'
-import Button from '../components/Button'
 import './Pages.css'
 
 interface Result {
