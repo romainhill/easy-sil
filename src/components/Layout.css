@@ -3,6 +3,75 @@
   min-height: 100vh;
 }
 
+/* Mobile Header */
+.mobile-header {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 60px;
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+  z-index: 1000;
+  box-shadow: 0 2px 4px var(--shadow);
+}
+
+.mobile-header-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 100%;
+  padding: 0 1rem;
+}
+
+.mobile-logo {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--primary);
+  font-weight: 700;
+  font-size: 1.25rem;
+}
+
+.mobile-logo-text {
+  color: var(--text);
+}
+
+.mobile-menu-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border: none;
+  background: transparent;
+  color: var(--text);
+  cursor: pointer;
+  border-radius: 8px;
+  transition: all 0.2s;
+}
+
+.mobile-menu-toggle:hover {
+  background: var(--background);
+}
+
+.mobile-menu-toggle:active {
+  transform: scale(0.95);
+}
+
+/* Mobile Overlay */
+.mobile-overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 998;
+}
+
 .sidebar {
   width: 260px;
   background: linear-gradient(180deg, #2C4A7C 0%, #3D5F99 100%);
@@ -14,6 +83,8 @@
   left: 0;
   top: 0;
   box-shadow: 2px 0 10px var(--shadow);
+  z-index: 999;
+  transition: transform 0.3s ease;
 }
 
 .sidebar-header {
@@ -114,41 +185,70 @@
   margin: 0 auto;
 }
 
+/* Tablet (768px - 1024px) */
+@media (max-width: 1024px) {
+  .content-wrapper {
+    padding: 1.5rem;
+  }
+}
+
+/* Mobile (< 768px) */
 @media (max-width: 768px) {
+  /* Show mobile header */
+  .mobile-header {
+    display: block;
+  }
+
+  /* Show overlay when menu is open */
+  .mobile-overlay {
+    display: block;
+  }
+
+  /* Hide sidebar by default on mobile */
   .sidebar {
-    width: 70px;
+    transform: translateX(-100%);
   }
-  
-  .sidebar-header {
-    padding: 1.5rem 0.5rem;
+
+  /* Show sidebar when open */
+  .sidebar.sidebar-open {
+    transform: translateX(0);
   }
-  
-  .app-title,
-  .app-subtitle {
-    display: none;
-  }
-  
-  .nav-item span {
-    display: none;
-  }
-  
-  .nav-item {
-    justify-content: center;
-    padding: 0.875rem;
-  }
-  
-  .user-info {
-    flex-direction: column;
-    text-align: center;
-  }
-  
-  .user-name,
-  .user-role {
-    display: none;
-  }
-  
+
+  /* Adjust main content */
   .main-content {
-    margin-left: 70px;
+    margin-left: 0;
+    padding-top: 60px;
+    width: 100%;
+  }
+
+  .content-wrapper {
+    padding: 1rem;
+  }
+
+  /* Make sidebar full width on mobile */
+  .sidebar {
+    width: 280px;
+    max-width: 85vw;
+  }
+}
+
+/* Small Mobile (< 480px) */
+@media (max-width: 480px) {
+  .mobile-header-content {
+    padding: 0 0.75rem;
+  }
+
+  .mobile-logo {
+    font-size: 1.125rem;
+  }
+
+  .content-wrapper {
+    padding: 0.75rem;
+  }
+
+  .sidebar {
+    width: 100%;
+    max-width: 100vw;
   }
 }
 

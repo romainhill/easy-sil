@@ -1,4 +1,4 @@
-import { ReactNode } from 'react'
+import { ReactNode, useState } from 'react'
 import { NavLink } from 'react-router-dom'
 import { 
   Users, 
@@ -7,7 +7,9 @@ import {
   Activity, 
   UserCog, 
   CheckCircle,
-  Microscope
+  Microscope,
+  Menu,
+  X
 } from 'lucide-react'
 import './Layout.css'
 
@@ -16,6 +18,8 @@ interface LayoutProps {
 }
 
 const Layout = ({ children }: LayoutProps) => {
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
+
   const menuItems = [
     { path: '/patients', label: 'Patients', icon: Users },
     { path: '/rendez-vous', label: 'Rendez-vous', icon: Calendar },
@@ -25,9 +29,31 @@ const Layout = ({ children }: LayoutProps) => {
     { path: '/validation', label: 'Validation', icon: CheckCircle },
   ]
 
+  const toggleMobileMenu = () => {
+    setIsMobileMenuOpen(!isMobileMenuOpen)
+  }
+
+  const closeMobileMenu = () => {
+    setIsMobileMenuOpen(false)
+  }
+
   return (
     <div className="layout">
-      <aside className="sidebar">
+      {/* Mobile Header */}
+      <header className="mobile-header">
+        <div className="mobile-header-content">
+          <div className="mobile-logo">
+            <Microscope size={24} />
+            <span className="mobile-logo-text">Easy-SIL</span>
+          </div>
+          <button className="mobile-menu-toggle" onClick={toggleMobileMenu} aria-label="Toggle menu">
+            {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+          </button>
+        </div>
+      </header>
+
+      {/* Sidebar / Mobile Menu */}
+      <aside className={`sidebar ${isMobileMenuOpen ? 'sidebar-open' : ''}`}>
         <div className="sidebar-header">
           <Microscope size={32} className="logo-icon" />
           <h1 className="app-title">Easy-SIL</h1>
@@ -41,6 +67,7 @@ const Layout = ({ children }: LayoutProps) => {
               className={({ isActive }) =>
                 `nav-item ${isActive ? 'active' : ''}`
               }
+              onClick={closeMobileMenu}
             >
               <item.icon size={20} />
               <span>{item.label}</span>
@@ -57,6 +84,12 @@ const Layout = ({ children }: LayoutProps) => {
           </div>
         </div>
       </aside>
+
+      {/* Overlay for mobile menu */}
+      {isMobileMenuOpen && (
+        <div className="mobile-overlay" onClick={closeMobileMenu}></div>
+      )}
+
       <main className="main-content">
         <div className="content-wrapper">
           {children}

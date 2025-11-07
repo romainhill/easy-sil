@@ -6,3 +6,17 @@
   border: 1px solid var(--border);
 }
 
+/* Mobile */
+@media (max-width: 768px) {
+  .card {
+    padding: 1rem;
+    border-radius: 8px;
+  }
+}
+
+@media (max-width: 480px) {
+  .card {
+    padding: 0.875rem;
+  }
+}
+

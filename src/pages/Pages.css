@@ -529,20 +529,150 @@
   justify-content: flex-end;
 }
 
+/* Tablet */
+@media (max-width: 1024px) {
+  .page-title {
+    font-size: 1.75rem;
+  }
+
+  .stats-grid {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  }
+
+  .machines-grid {
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  }
+
+  .staff-grid {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  }
+}
+
+/* Mobile */
 @media (max-width: 768px) {
   .page-header {
     flex-direction: column;
     align-items: flex-start;
     gap: 1rem;
+    margin-bottom: 1.5rem;
   }
 
+  .page-title {
+    font-size: 1.5rem;
+  }
+
+  .page-subtitle {
+    font-size: 0.875rem;
+  }
+
+  .card-title {
+    font-size: 1.125rem;
+  }
+
+  /* Stats Grid */
   .stats-grid {
     grid-template-columns: 1fr;
+    gap: 1rem;
   }
 
+  .stat-card {
+    padding: 1rem;
+  }
+
+  .stat-icon {
+    width: 48px;
+    height: 48px;
+  }
+
+  .stat-value {
+    font-size: 1.75rem;
+  }
+
+  /* Tables */
+  .table-container {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .data-table {
+    min-width: 600px;
+    font-size: 0.875rem;
+  }
+
+  .data-table th,
+  .data-table td {
+    padding: 0.75rem 0.5rem;
+  }
+
+  .data-table th {
+    font-size: 0.75rem;
+  }
+
+  /* Action buttons */
+  .action-buttons {
+    flex-wrap: wrap;
+  }
+
+  .action-btn {
+    padding: 0.4rem;
+  }
+
+  /* Search Bar */
+  .search-input {
+    font-size: 0.875rem;
+    padding: 0.75rem 1rem 0.75rem 2.75rem;
+  }
+
+  .search-icon {
+    left: 0.75rem;
+  }
+
+  /* Grids */
   .machines-grid,
   .staff-grid {
     grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .machine-card,
+  .staff-card {
+    padding: 1.25rem;
+  }
+
+  /* Appointments */
+  .appointment-item {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.75rem;
+  }
+
+  .appointment-time {
+    width: 100%;
+  }
+
+  /* Validation */
+  .validation-header {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .validation-patient {
+    font-size: 1.125rem;
+  }
+
+  .validation-results {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .results-table {
+    min-width: 500px;
+    font-size: 0.875rem;
+  }
+
+  .results-table th,
+  .results-table td {
+    padding: 0.5rem;
   }
 
   .validation-actions {
@@ -551,6 +681,44 @@
 
   .validation-actions button {
     width: 100%;
+  }
+
+  /* Status Badges */
+  .status-badge {
+    font-size: 0.625rem;
+    padding: 0.25rem 0.5rem;
+  }
+}
+
+/* Small Mobile */
+@media (max-width: 480px) {
+  .page-title {
+    font-size: 1.25rem;
+  }
+
+  .stat-value {
+    font-size: 1.5rem;
+  }
+
+  .stat-label {
+    font-size: 0.75rem;
+  }
+
+  .data-table {
+    min-width: 500px;
+    font-size: 0.8125rem;
+  }
+
+  .machine-name,
+  .staff-name {
+    font-size: 1.125rem;
+  }
+
+  .info-label,
+  .info-value,
+  .staff-role,
+  .staff-specialite {
+    font-size: 0.8125rem;
   }
 }
 
